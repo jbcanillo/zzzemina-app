@@ -1,0 +1,33 @@
+#root {
+  max-width: 100%x;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+section {
+  padding: 20px;
+}
+
+h1{
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#app-nav-bar {
+  position: 'absolute';
+  z-index: 999
+}
+
+.drawer-side {
+  z-index: 1000;
+}
+
+.toast {
+  z-index: 1001;
+}
