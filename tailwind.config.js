@@ -1,4 +1,7 @@
-module.exports = {
+// Importing path (though unused)
+import path from 'path';
+
+export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
