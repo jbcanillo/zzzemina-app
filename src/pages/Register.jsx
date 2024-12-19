@@ -36,7 +36,7 @@ const Register = () => {
       setGeneralError(""); // Reset the general error before submission
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/register",
+          "https://zzzemina-api.vercel.app/api/auth/register",
           values
         );
         if (response.status === 201) {

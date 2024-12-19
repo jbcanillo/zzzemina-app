@@ -15,7 +15,7 @@ const BookingManagement = () => {
   const [bookings, setBookings] = useState([]);
 
   const fetchBookings = () => {
-    Axios.get("http://localhost:5000/api/bookings", {
+    Axios.get("https://zzzemina-api.vercel.app/api/bookings", {
       withCredentials: true,
     })
       .then((response) => {
@@ -42,7 +42,7 @@ const BookingManagement = () => {
     if (!isConfirmed) return;
 
     Axios.put(
-      `http://localhost:5000/api/bookings/${id}`,
+      `https://zzzemina-api.vercel.app/api/bookings/${id}`,
       { paymentStatus: status },
       {
         withCredentials: true,
@@ -68,7 +68,7 @@ const BookingManagement = () => {
     );
     if (!isConfirmed) return;
 
-    Axios.delete(`http://localhost:5000/api/bookings/${id}`, {
+    Axios.delete(`https://zzzemina-api.vercel.app/api/bookings/${id}`, {
       withCredentials: true,
     })
       .then(() => {

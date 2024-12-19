@@ -29,7 +29,7 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          "https://zzzemina-api.vercel.app/api/auth/login",
           values,
           { withCredentials: true } // Important: Include withCredentials to handle cookies
         );

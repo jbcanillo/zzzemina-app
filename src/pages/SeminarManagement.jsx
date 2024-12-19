@@ -12,7 +12,7 @@ const SeminarManagement = () => {
   const [editSeminar, setEditSeminar] = useState(null);
 
   const fetchSeminars = () => {
-    Axios.get("http://localhost:5000/api/seminars", { withCredentials: true })
+    Axios.get("https://zzzemina-api.vercel.app/api/seminars", { withCredentials: true })
       .then((response) => {
         const data = response.data || [];
         console.log("Fetched seminars:", data);
@@ -31,7 +31,7 @@ const SeminarManagement = () => {
 
   // Create a new seminar
   const handleCreate = (seminarData) => {
-    Axios.post("http://localhost:5000/api/seminars", seminarData, {
+    Axios.post("https://zzzemina-api.vercel.app/api/seminars", seminarData, {
       withCredentials: true,
     })
       .then((response) => {
@@ -48,7 +48,7 @@ const SeminarManagement = () => {
   // Update an existing seminar
   const handleUpdate = (seminarData) => {
     Axios.put(
-      `http://localhost:5000/api/seminars/${editSeminar._id}`,
+      `https://zzzemina-api.vercel.app/api/seminars/${editSeminar._id}`,
       seminarData,
       { withCredentials: true }
     )
@@ -74,7 +74,7 @@ const SeminarManagement = () => {
     );
     if (!isConfirmed) return;
 
-    Axios.delete(`http://localhost:5000/api/seminars/${id}`, {
+    Axios.delete(`https://zzzemina-api.vercel.app/api/seminars/${id}`, {
       withCredentials: true,
     })
       .then(() => {

@@ -22,7 +22,7 @@ const UserManagement = () => {
   const [editUser, setEditUser] = useState(null);
 
   const fetchUsers = () => {
-    Axios.get("http://localhost:5000/api/users", { withCredentials: true })
+    Axios.get("https://zzzemina-api.vercel.app/api/users", { withCredentials: true })
       .then((response) => {
         setUsers(response.data); // Update state with fetched users
       })
@@ -46,7 +46,7 @@ const UserManagement = () => {
     };
 
     // Send user data with password to the backend
-    Axios.post("http://localhost:5000/api/users", userDataWithPassword, {
+    Axios.post("https://zzzemina-api.vercel.app/api/users", userDataWithPassword, {
       withCredentials: true,
     })
       .then((response) => {
@@ -58,7 +58,7 @@ const UserManagement = () => {
           );
           fetchUsers();
           // Send the password to the user's email through the backend
-          Axios.post("http://localhost:5000/api/users/sendPassword", {
+          Axios.post("https://zzzemina-api.vercel.app/api/users/sendPassword", {
             email: userData.email,
             password: password,
           })
@@ -88,7 +88,7 @@ const UserManagement = () => {
       return;
     }
 
-    Axios.put(`http://localhost:5000/api/users/${editUser._id}`, userData, {
+    Axios.put(`https://zzzemina-api.vercel.app/api/users/${editUser._id}`, userData, {
       withCredentials: true,
     })
       .then((response) => {
@@ -115,7 +115,7 @@ const UserManagement = () => {
     );
     if (!isConfirmed) return; // If user cancels, do nothing
 
-    Axios.delete(`http://localhost:5000/api/users/${id}`, {
+    Axios.delete(`https://zzzemina-api.vercel.app/api/users/${id}`, {
       withCredentials: true,
     })
       .then(() => {

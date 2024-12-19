@@ -10,7 +10,7 @@ const Home = () => {
   const fetchSeminars = async () => {
     try {
       const response = await Axios.get(
-        "http://localhost:5000/api/seminars/featured/10",
+        "https://zzzemina-api.vercel.app/api/seminars/featured/10",
         {
           withCredentials: true,
         }

@@ -14,7 +14,7 @@ const Seminars = () => {
 
   // Fetch all seminars initially
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/seminars/available")
+    Axios.get("https://zzzemina-api.vercel.app/api/seminars/available")
       .then((response) => {
         setSeminars(response.data);
         setFilteredSeminars(response.data); // Show all initially

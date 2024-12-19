@@ -35,7 +35,7 @@ const Seminar = () => {
     try {
       setLoading(true);
       const response = await Axios.get(
-        `http://localhost:5000/api/seminars/${id}`,
+        `https://zzzemina-api.vercel.app/api/seminars/${id}`,
         {
           withCredentials: true,
         }
@@ -75,7 +75,7 @@ const Seminar = () => {
 
   const handleAddBooking = (seminarId) => {
     Axios.post(
-      `http://localhost:5000/api/bookings`,
+      `https://zzzemina-api.vercel.app/api/bookings`,
       { seminarId, user },
       {
         withCredentials: true,

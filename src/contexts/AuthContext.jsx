@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
       try {
         // Make an authenticated request to check the user's session
         const response = await axios.get(
-          "http://localhost:5000/api/auth/status",
+          "https://zzzemina-api.vercel.app/api/auth/status",
           {
             withCredentials: true,
           }
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // Call the backend to clear the httpOnly authToken cookie
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "https://zzzemina-api.vercel.app/api/auth/logout",
         {},
         { withCredentials: true }
       );
