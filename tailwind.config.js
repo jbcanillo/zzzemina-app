@@ -1,7 +1,5 @@
-const path = require('path');
-
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -9,6 +7,7 @@ module.exports = {
       },
     },
   },
+  plugins: [require("daisyui")],
   daisyui: {
     themes: [
       {
