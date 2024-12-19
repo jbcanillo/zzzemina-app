@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
