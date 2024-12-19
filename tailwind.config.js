@@ -1,7 +1,6 @@
-// Importing path (though unused)
-import path from 'path';
+const path = require('path');
 
-export default {
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
