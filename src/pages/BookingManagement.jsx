@@ -6,7 +6,7 @@ import {
   formatDate,
   formatTime,
   toProperCase,
-} from "../hooks/customHooks";
+} from "../helpers/CustomHelpers";
 import { useToast } from "../contexts/ToastContext";
 
 const BookingManagement = () => {

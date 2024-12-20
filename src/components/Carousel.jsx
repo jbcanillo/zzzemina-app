@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { formatDate, formatTime, getRandomGradient } from "../hooks/customHooks";
+import { formatDate, formatTime, getRandomGradient } from "../helpers/CustomHelpers";
 import { Link } from "react-router-dom";
 
 const Carousel = ({ seminars }) => {

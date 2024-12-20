@@ -2,18 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { useToast } from "../contexts/ToastContext";
+import { generateRandomPassword } from "../helpers/CustomHelpers";
 import UserForm from "../forms/UserForm";
-
-const generateRandomPassword = (length = 12) => {
-  const charset =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length);
-    password += charset[randomIndex];
-  }
-  return password;
-};
 
 const UserManagement = () => {
   const navigate = useNavigate();

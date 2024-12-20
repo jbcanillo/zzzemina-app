@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import { formatDate, formatTime, getRandomGradient } from "../hooks/customHooks";
+import {
+  formatDate,
+  formatTime,
+  getRandomGradient,
+} from "../helpers/CustomHelpers";
 import { useToast } from "../contexts/ToastContext";
 
 const Seminars = () => {
@@ -21,7 +25,7 @@ const Seminars = () => {
       })
       .catch((error) => {
         console.error("Error fetching seminars:", error);
-        showToastMessage(error.response?.data?.message|| "Error", "error");
+        showToastMessage(error.response?.data?.message || "Error", "error");
       });
   }, []);
 
@@ -66,24 +70,25 @@ const Seminars = () => {
   };
 
   return (
-    <section className="m-4 px-4">
-      <div className="card card-compact bg-base-300 skeleton border border-gray-800 mb-5 rounded-none shadow-2xl ">
+    <section className="mt-4">
+      <h1>Browse Seminars</h1>
+      <div className="card card-compact bg-base-300 skeleton border border-gray-800 mb-5 rounded-none shadow-2xl">
         <div className="card-body">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <label className="w-10">Date:</label>
+          <div className="flex flex-wrap gap-4  items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-2">
+              <label className="w-full mt-1 md:w-10">Date:</label>
               <input
-                className="input input-bordered w-48"
+                className="input input-bordered input-sm w-full md:w-48"
                 type="date"
                 name="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <label className="w-20">Time of day:</label>
+            <div className="flex flex-col md:flex-row gap-2">
+              <label className="w-full mt-1 md:w-20">Time of day:</label>
               <select
-                className="input input-bordered w-48"
+                className="input input-bordered input-sm w-full md:w-48"
                 name="timeFrom"
                 value={timeFrom}
                 onChange={(e) => setTimeFrom(e.target.value)}
@@ -93,21 +98,27 @@ const Seminars = () => {
                 <option value="PM">PM</option>
               </select>
             </div>
-            <div className="flex items-center gap-2">
-              <label className="w-20">Speaker:</label>
+            <div className="flex flex-col md:flex-row gap-2">
+              <label className="w-full mt-1 md:w-14">Speaker:</label>
               <input
-                className="input input-bordered w-96"
+                className="input input-bordered input-sm w-full md:w-60"
                 type="text"
                 name="speaker"
                 value={speaker}
                 onChange={(e) => setSpeaker(e.target.value)}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <button className="btn btn-primary w-44" onClick={handleSearch}>
+            <div className="flex flex-col md:flex-row gap-2">
+              <button
+                className="btn btn-sm btn-primary w-full md:w-20"
+                onClick={handleSearch}
+              >
                 Search
               </button>
-              <button className="btn btn-neutral w-44" onClick={handleClear}>
+              <button
+                className="btn btn-sm btn-neutral w-full md:w-20"
+                onClick={handleClear}
+              >
                 Clear
               </button>
             </div>
@@ -118,7 +129,7 @@ const Seminars = () => {
         {filteredSeminars.map((seminar) => (
           <div
             key={seminar._id}
-            className="w-fit md:w-60 lg:w-80 justify-center items-center"
+            className="w-full sm:w-80 md:w-60 lg:w-80 justify-center items-center"
           >
             <div className="card card-compact bg-base-300 w-full border border-gray-800 shadow-xl">
               <figure

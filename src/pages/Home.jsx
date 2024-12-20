@@ -28,18 +28,18 @@ const Home = () => {
 
   return (
     <>
-      <div className="max-h-screen h-full flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <Hero />
       </div>
       <div className="h-fit w-full flex flex-col items-center">
         <h1 className="h1 text-4xl mt-10 mb-10">Featured Seminars</h1>
         <Carousel seminars={seminars} />
       </div>
-      <div className="h-fit w-full flex flex-col items-center m-10">
+      <div className="h-fit w-full flex flex-col items-center mb-10">
         <span className="text-3xl mt-10 mb-4">
           Looking for more?
         </span>
-        <Link to="/browse_seminars" className="btn btn-wide btn-secondary">
+        <Link to="/browse_seminars" className="btn btn-wide btn-primary">
           Browse...
         </Link>
       </div>

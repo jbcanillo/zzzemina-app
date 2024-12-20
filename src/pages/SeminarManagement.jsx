@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { formatDate, formatTime } from "../hooks/customHooks";
+import { formatDate, formatTime } from "../helpers/CustomHelpers";
 import { useToast } from "../contexts/ToastContext";
 import SeminarForm from "../forms/SeminarForm";
 

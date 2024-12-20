@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useState } from "react";
 
 const NavBar = () => {
   const { isAuthenticated, logout, user } = useAuth(); // Get the authentication state
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for toggling mobile menu
 
   const handleLogout = () => {
     logout();
@@ -11,15 +13,28 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-lg fixed" id="app-nav-bar">
+    <div className="navbar bg-base-100 shadow-lg fixed w-full z-10" id="app-nav-bar">
       <div className="flex-1">
-        <a className="btn text-xl skeleton">Zzzemina</a>
+        <Link to="/" className="btn btn-ghost rounded-none text-xl skeleton">Zzzemina</Link>
       </div>
-      <div className="flex-none">
+
+      {/* Hamburger menu button (mobile) */}
+      <div className="flex-none lg:hidden">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="btn btn-ghost btn-circle text-xl"
+        >
+          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i> {/* Toggle icon */}
+        </button>
+      </div>
+
+      {/* Menu (desktop) */}
+      <div className={`flex-none lg:flex ${isMenuOpen ? 'block' : 'hidden'} lg:block`}>
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/">Home</Link>
           </li>
+
           {/* Only show Management if authenticated as admin */}
           {isAuthenticated && user?.role === "admin" && (
             <li>
@@ -54,8 +69,8 @@ const NavBar = () => {
         </ul>
       </div>
 
+      {/* Profile and login button */}
       <div className="flex-none gap-2">
-        {/* Show avatar and profile if authenticated */}
         {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -83,7 +98,6 @@ const NavBar = () => {
             </ul>
           </div>
         ) : (
-          // Show login link if not authenticated
           <Link to="/login" className="btn btn-default">
             Login
           </Link>

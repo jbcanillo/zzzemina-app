@@ -5,7 +5,7 @@ import {
   formatTime,
   formatCurrency,
   getRandomGradient,
-} from "../hooks/customHooks";
+} from "../helpers/CustomHelpers";
 import Axios from "axios";
 import {
   FaUser,
@@ -95,8 +95,8 @@ const Seminar = () => {
   };
 
   return (
-    <section className="m-10 p-10">
-      <button onClick={()=> navigate(-1)} className="text-2xl -mt-3 mb-4">
+    <section className="m-4 sm:m-6 lg:m-10 p-4 sm:p-6 lg:p-10">
+      <button onClick={() => navigate(-1)} className="text-2xl mb-4">
         <FaArrowLeft />
       </button>
       <div className="skeleton mockup-browser bg-base-300 shadow-xl">
@@ -108,116 +108,112 @@ const Seminar = () => {
           </div>
         </div>
         <div
-          className="bg-base-200 px-4 py-5"
+          className="bg-base-200 px-4 py-5 rounded-lg"
           style={{
             background: background, // Using the fixed background gradient
-            borderRadius: "0.375rem",
           }}
         >
-          <div className="flex w-full flex-col gap-4 p-6 ">
-            <div className="flex items-center gap-4">
-              <div className="flex flex-col gap-4">
-                <img
-                  src={
-                    seminar.speaker.image ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  }
-                  alt={seminar.speaker.name}
-                  className="w-48 h-48 rounded-full border-4 border-white"
-                  onError={(e) =>
-                    (e.target.src =
-                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp")
-                  }
-                />
+          <div className="flex flex-col gap-4 sm:flex-row p-6">
+            <div className="flex flex-col items-center gap-4 sm:items-start">
+              <img
+                src={
+                  seminar.speaker.image ||
+                  "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                }
+                alt={seminar.speaker.name}
+                className="w-48 h-48 rounded-full border-4 border-white"
+                onError={(e) =>
+                  (e.target.src =
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp")
+                }
+              />
+            </div>
+            <div className="flex flex-col gap-4 w-full sm:w-3/6">
+              <h1
+                className="text-2xl sm:text-4xl mb-2 text-center sm:text-left"
+                style={{
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                }}
+              >
+                {seminar.title || "Seminar Title"}
+              </h1>
+              <p
+                className="italic text-center sm:text-left"
+                style={{
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                }}
+              >
+                {seminar.description}
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg w-full sm:w-3/12">
+              <CountdownTimer
+                seminarDate={seminarDate}
+                seminarTime={seminarTime}
+              />
+              <div className="flex items-center gap-2">
+                <FaUser />
+                <h3>Speaker: {seminar.speaker?.name}</h3>
               </div>
-              <div className="flex flex-col gap-4 w-3/6">
-                <h1
-                  className="text-4xl mb-2"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
-                  }}
-                >
-                  {seminar.title || "Seminar Title"}
-                </h1>
-                <p
-                  className="italic"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
-                  }}
-                >
-                  {seminar.description}
-                </p>
+              <div className="flex items-center gap-2">
+                <FaCalendar />
+                <h3>Date: {formatDate(seminar.date)}</h3>
               </div>
-              <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg">
-                <CountdownTimer
-                  seminarDate={seminarDate}
-                  seminarTime={seminarTime}
-                />
-                <div className="flex items-center gap-2">
-                  <FaUser />
-                  <h3>Speaker: {seminar.speaker?.name}</h3>
-                </div>
-                <div className="flex items-center gap-2 w-max">
-                  <FaCalendar />
-                  <h3>Date: {formatDate(seminar.date)}</h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaClock />
-                  <h3>
-                    Time: {formatTime(seminar.timeFrame?.from)} -{" "}
-                    {formatTime(seminar.timeFrame?.to)}
-                  </h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaMapMarkerAlt />
-                  <h3>Venue: {seminar.venue}</h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MdPayment />
-                  <h3>
-                    Fee:{" "}
-                    {seminar.fee > 0 ? formatCurrency(seminar.fee) : "Free"}
-                  </h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaChair />
-                  <h3>Slots remaining: {seminar.slotsAvailable}</h3>
-                </div>
-                <div className="items-center justify-center w-full">
-                  {isAuthenticated && user?.role === "user" ? (
-                    (() => {
-                      const today = new Date();
-                      const seminarDate = new Date(seminar.date);
+              <div className="flex items-center gap-2">
+                <FaClock />
+                <h3>
+                  Time: {formatTime(seminar.timeFrame?.from)} -{" "}
+                  {formatTime(seminar.timeFrame?.to)}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaMapMarkerAlt />
+                <h3>Venue: {seminar.venue}</h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <MdPayment />
+                <h3>
+                  Fee: {seminar.fee > 0 ? formatCurrency(seminar.fee) : "Free"}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaChair />
+                <h3>Slots remaining: {seminar.slotsAvailable}</h3>
+              </div>
+              <div className="w-full flex justify-center mt-4">
+                {isAuthenticated && user?.role === "user" ? (
+                  (() => {
+                    const today = new Date();
+                    const seminarDate = new Date(seminar.date);
 
-                      if (seminar.slotsAvailable <= 0) {
-                        return (
-                          <p className="m-2 text-xl justify-center text-center text-red-500">
-                            Fully booked!
-                          </p>
-                        );
-                      } else if (seminarDate > today) {
-                        return (
-                          <button
-                            className="btn btn-xl btn-neutral btn-block"
-                            onClick={() => handleAddBooking(seminar._id)}
-                          >
-                            Book a reservation
-                          </button>
-                        );
-                      } else {
-                        return (
-                          <p className="m-2 text-xl justify-center text-center text-red-500">
-                            No longer available!
-                          </p>
-                        );
-                      }
-                    })()
-                  ) : (
-                    <p className="m-2 text-xl justify-center text-center text-red-500">
-                      Please login to reserve
-                    </p>
-                  )}
-                </div>
+                    if (seminar.slotsAvailable <= 0) {
+                      return (
+                        <p className="m-2 text-xl text-center text-red-500">
+                          Fully booked!
+                        </p>
+                      );
+                    } else if (seminarDate > today) {
+                      return (
+                        <button
+                          className="btn btn-xl btn-neutral w-full"
+                          onClick={() => handleAddBooking(seminar._id)}
+                        >
+                          Book a reservation
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <p className="m-2 text-xl text-center text-red-500">
+                          No longer available!
+                        </p>
+                      );
+                    }
+                  })()
+                ) : (
+                  <p className="m-2 text-xl text-center text-red-500">
+                    Please login to reserve
+                  </p>
+                )}
               </div>
             </div>
           </div>

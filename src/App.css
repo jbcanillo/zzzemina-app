@@ -1,13 +1,33 @@
 #root {
-  max-width: 100%x;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* Global styles to prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden; /* Disable horizontal scrolling */
+  width: 100%; /* Ensure full-width */
+  margin: 0; /* Remove default margin */
+}
+
+/* Make sure the hero section stretches across the entire viewport */
+.hero {
+  width: 100vw; /* Full width of the viewport */
+  overflow: hidden; /* Prevent any overflow from causing scroll */
+}
+
+/* Ensure sections like the footer and content fill the screen properly */
+footer, .container, .carousel-wrapper {
+  width: 100%; /* Full width */
+}
+
+/* Remove any extra padding or margins that might contribute to extra width */
+body {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
 }
 
 section {

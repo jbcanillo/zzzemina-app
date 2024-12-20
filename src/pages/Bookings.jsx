@@ -16,7 +16,7 @@ import {
   formatTime,
   formatCurrency,
   getRandomGradient,
-} from "../hooks/customHooks";
+} from "../helpers/CustomHelpers";
 
 const Bookings = () => {
   const navigate = useNavigate();
@@ -69,11 +69,9 @@ const Bookings = () => {
 
   return (
     <section>
-      <h1>My Bookings</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">My Bookings</h1>
       {bookings.length === 0 ? (
-        <tr>
-          <td colSpan="10">No bookings yet</td>
-        </tr>
+        <div className="text-center text-xl">No bookings yet</div>
       ) : (
         bookings.map((booking) => {
           const seminar = booking.seminar;
@@ -104,95 +102,93 @@ const Bookings = () => {
                   >
                     Booking ID: {booking._id}
                   </h2>
-                  <div className="flex w-full flex-col gap-4 p-6">
-                    <div className="flex items-center gap-4">
-                      <div className="flex flex-col gap-4">
-                        <img
-                          src={
-                            seminar.speaker.image ||
-                            "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                          }
-                          alt={seminar.speaker?.name}
-                          className="w-48 h-48 rounded-full border-4 border-white"
-                          onError={(e) =>
-                            (e.target.src =
-                              "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp")
-                          }
-                        />
+                  <div className="flex flex-col gap-4 p-6 sm:flex-row sm:gap-6">
+                    <div className="flex flex-col items-center gap-4 w-full sm:w-4/12">
+                      <img
+                        src={
+                          seminar.speaker.image ||
+                          "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                        }
+                        alt={seminar.speaker?.name}
+                        className="w-48 h-48 rounded-full border-4 border-white"
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp")
+                        }
+                      />
+                    </div>
+                    <div className="flex flex-col gap-4 w-full sm:w-5/12">
+                      <h1
+                        className="text-4xl mb-2"
+                        style={{
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                        }}
+                      >
+                        {seminar.title || "Seminar Title"}
+                      </h1>
+                      <p
+                        className="italic"
+                        style={{
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                        }}
+                      >
+                        {seminar.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg w-full sm:w-4/12">
+                      <CountdownTimer
+                        seminarDate={seminarDate}
+                        seminarTime={seminarTime}
+                      />
+                      <div className="flex items-center gap-2">
+                        <FaUser />
+                        <h3>Speaker: {seminar.speaker?.name}</h3>
                       </div>
-                      <div className="flex flex-col gap-4 w-3/6">
-                        <h1
-                          className="text-4xl mb-2"
-                          style={{
-                            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
-                          }}
-                        >
-                          {seminar.title || "Seminar Title"}
-                        </h1>
-                        <p
-                          className="italic"
-                          style={{
-                            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
-                          }}
-                        >
-                          {seminar.description}
-                        </p>
+                      <div className="flex items-center gap-2 w-max">
+                        <FaCalendar />
+                        <h3>Date: {formatDate(seminar.date)}</h3>
                       </div>
-                      <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg">
-                        <CountdownTimer
-                          seminarDate={seminarDate}
-                          seminarTime={seminarTime}
-                        />
-                        <div className="flex items-center gap-2">
-                          <FaUser />
-                          <h3>Speaker: {seminar.speaker?.name}</h3>
-                        </div>
-                        <div className="flex items-center gap-2 w-max">
-                          <FaCalendar />
-                          <h3>Date: {formatDate(seminar.date)}</h3>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <FaClock />
-                          <h3>
-                            Time: {formatTime(seminar.timeFrame?.from)} -{" "}
-                            {formatTime(seminar.timeFrame?.to)}
-                          </h3>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <FaMapMarkerAlt />
-                          <h3>Venue: {seminar.venue}</h3>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <FaChair />
-                          <h3>Slots remaining: {seminar.slotsAvailable}</h3>
-                        </div>
-                        <div className="items-center justify-center w-full">
-                          {booking.paymentStatus === "pending" && (
-                            <button
-                              className="btn btn-xl btn-success btn-block"
-                              onClick={() => handlePayBooking(booking._id)}
-                            >
-                              Pay Now ({formatCurrency(seminar.fee)})
-                            </button>
-                          )}
-                          {booking.paymentStatus === "confirmed" && (
-                            <p className="m-2 text-xl justify-center text-center text-green-500">
-                              Payment confirmed
-                            </p>
-                          )}
-                          {booking.paymentStatus === "rejected" && (
-                            <p className="m-2 text-xl justify-center text-center text-red-500">
-                              Payment rejected
-                            </p>
-                          )}
-                          <div className="divider"></div>
+                      <div className="flex items-center gap-2">
+                        <FaClock />
+                        <h3>
+                          Time: {formatTime(seminar.timeFrame?.from)} -{" "}
+                          {formatTime(seminar.timeFrame?.to)}
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <FaMapMarkerAlt />
+                        <h3>Venue: {seminar.venue}</h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <FaChair />
+                        <h3>Slots remaining: {seminar.slotsAvailable}</h3>
+                      </div>
+                      <div className="items-center justify-center w-full">
+                        {booking.paymentStatus === "pending" && (
                           <button
-                            className="btn btn-xl btn-error btn-block"
-                            onClick={() => handleCancelBooking(booking._id)}
+                            className="btn btn-xl btn-success btn-block"
+                            onClick={() => handlePayBooking(booking._id)}
                           >
-                            Cancel Reservation
+                            Pay Now ({formatCurrency(seminar.fee)})
                           </button>
-                        </div>
+                        )}
+                        {booking.paymentStatus === "confirmed" && (
+                          <p className="m-2 text-xl justify-center text-center text-green-500">
+                            Payment confirmed
+                          </p>
+                        )}
+                        {booking.paymentStatus === "rejected" && (
+                          <p className="m-2 text-xl justify-center text-center text-red-500">
+                            Payment rejected
+                          </p>
+                        )}
+                        <div className="divider"></div>
+                        <button
+                          className="btn btn-xl btn-error btn-block"
+                          onClick={() => handleCancelBooking(booking._id)}
+                        >
+                          Cancel Reservation
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,15 @@
+// Generates random Password with given length
+const generateRandomPassword = (length = 12) => {
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+  return password;
+};
+
 // Function to format date to 'F j, Y' (e.g., December 14, 2024)
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -59,6 +71,7 @@ function toProperCase(str) {
 }
 
 export {
+  generateRandomPassword,
   formatDate,
   formatTime,
   formatCurrency,

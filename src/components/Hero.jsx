@@ -21,12 +21,14 @@ const Hero = () => {
 
   return (
     <div
-      className="hero min-h-screen min-w-fit"
+      className="hero min-h-screen min-w-full" // Ensure the hero stretches the full width
       style={{
         backgroundImage:
           "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
         backgroundPosition: `center ${scrollY * 0.05}px`, // Parallax effect
         backgroundAttachment: "fixed", // Optional: Enables basic parallax
+        backgroundSize: "cover", // Ensures the image covers the entire area
+        width: "100vw", // Ensures full width of the viewport
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
@@ -36,11 +38,11 @@ const Hero = () => {
           <h1>Your Gateway for Learning</h1>
           <p className="py-6 text-lg">
             Experience our effortless online reservation platform. Register, book your
-            seminar, and make payment online — all in just a few clicks. <br/>Fast,
-            secure, and hassle-free, so you can focus on gaining knowledge
+            seminar, and make payment online — all in just a few clicks. <br />
+            Fast, secure, and hassle-free, so you can focus on gaining knowledge
             without the wait!
           </p>
-          <Link to="/register" className="btn btn-primary">
+          <Link to="/register" className="btn btn-secondary">
             Get Started
           </Link>
         </div>
