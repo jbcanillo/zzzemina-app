@@ -1,5 +1,7 @@
-# zzzemina-api
-Backend API for Zzzemina App
+# zzzemina-app
+Frontend UI for Zzzemina App
+
+Sample Login credentials:
 
 Admin: 
 u: admin@example.com
