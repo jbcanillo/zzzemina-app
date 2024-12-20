@@ -73,7 +73,7 @@ const Seminars = () => {
     <section className="mt-4">
       <div className="card card-compact bg-base-300 skeleton border border-gray-800 mb-5 rounded-none shadow-2xl">
         <div className="card-body">
-          <div className="flex flex-wrap gap-4  items-center justify-center">
+          <div className="flex flex-wrap gap-4 items-center justify-center">
             <div className="flex flex-col md:flex-row gap-2">
               <label className="w-full mt-1 md:w-10">Date:</label>
               <input
@@ -124,13 +124,14 @@ const Seminars = () => {
           </div>
         </div>
       </div>
+
       <div className="flex flex-wrap justify-center items-center gap-4">
         {filteredSeminars.map((seminar) => (
           <div
             key={seminar._id}
             className="w-full sm:w-80 md:w-60 lg:w-80 justify-center items-center"
           >
-            <div className="card card-compact bg-base-300 w-full border border-gray-800 shadow-xl">
+            <div className="card card-compact bg-base-300 w-full border border-gray-800 shadow-xl flex flex-col">
               <figure
                 className="relative w-full h-48"
                 style={{
@@ -151,7 +152,7 @@ const Seminars = () => {
                   }
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body flex flex-col flex-grow">
                 <h2 className="card-title">{seminar.title}</h2>
                 <h3>Presented by {seminar.speaker.name}</h3>
                 <h3>
@@ -160,7 +161,8 @@ const Seminars = () => {
                   {formatTime(seminar.timeFrame.to)}
                 </h3>
                 <h3>{seminar.slotsAvailable} available slots remaining</h3>
-                <div className="card-actions justify-center">
+
+                <div className="card-actions justify-center mt-auto">
                   <Link
                     to={`/seminar/${seminar._id}`}
                     className="btn btn-sm btn-dark"

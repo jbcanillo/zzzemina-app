@@ -88,7 +88,7 @@ const Carousel = ({ seminars }) => {
                   }
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body flex flex-col flex-grow">
                 <h2 className="card-title">{seminar.title}</h2>
                 <h3>Presented by {seminar.speaker.name}</h3>
                 <h3>
@@ -97,7 +97,7 @@ const Carousel = ({ seminars }) => {
                   {formatTime(seminar.timeFrame.to)}
                 </h3>
                 <h3>{seminar.slotsAvailable} available slots remaining</h3>
-                <div className="card-actions justify-center">
+                <div className="card-actions justify-center mt-auto">
                   {/* Link to the seminar details page */}
                   <Link
                     to={`/seminar/${seminar._id}`}

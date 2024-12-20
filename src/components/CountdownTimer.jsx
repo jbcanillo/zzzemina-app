@@ -51,19 +51,19 @@ const CountdownTimer = ({ seminarDate, seminarTime }) => {
     <div className="items-center justify-center w-full">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 text-center auto-cols-max">
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-3xl sm:text-5xl">{countdown.days}</span>
+          <span className="countdown justify-center font-mono text-3xl sm:text-5xl">{countdown.days}</span>
           days
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-3xl sm:text-5xl">{countdown.hours}</span>
+          <span className="countdown justify-center font-mono text-3xl sm:text-5xl">{countdown.hours}</span>
           hours
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-3xl sm:text-5xl">{countdown.minutes}</span>
+          <span className="countdown justify-center font-mono text-3xl sm:text-5xl">{countdown.minutes}</span>
           min
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-3xl sm:text-5xl">{countdown.seconds}</span>
+          <span className="countdown justify-center font-mono text-3xl sm:text-5xl">{countdown.seconds}</span>
           sec
         </div>
       </div>
