@@ -24,7 +24,7 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {/* Hamburger menu button (mobile) */}
+      {/* Hamburger menu button */}
       <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -34,7 +34,7 @@ const NavBar = () => {
         </button>
       </div>
 
-      {/* Drawer (mobile) */}
+      {/* Drawer */}
       <div
         className={`fixed top-0 left-0 h-full bg-base-300 w-64 opacity-90 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -58,37 +58,29 @@ const NavBar = () => {
 
           {/* Only show Management if authenticated as admin */}
           {isAuthenticated && user?.role === "admin" && (
-            <li>
-              <details>
-                <summary>Management</summary>
-                <ul className="bg-base-100 p-2">
-                  <li>
-                    <Link
-                      to="/manage_users"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Users
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/manage_seminars"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Seminars
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/manage_bookings"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Bookings
-                    </Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
+            <>
+              <li>
+                <Link to="/manage_users" onClick={() => setIsMenuOpen(false)}>
+                  User Management
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/manage_seminars"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Seminar Management
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/manage_bookings"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Booking Management
+                </Link>
+              </li>
+            </>
           )}
 
           {/* Show this for authenticated users with "user" role */}
@@ -135,12 +127,12 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <h4 className="justify-center">
-                  Hello, {user?.name || "Human"}
-                </h4>
+              <span>
+                <h3 className="p-2 justify-center">
+                  Hello, {user?.name || "Nenderthal"}
+                </h3>
                 <hr />
-              </li>
+              </span>
               <li>
                 <a className="justify-between">
                   Profile

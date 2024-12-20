@@ -129,7 +129,7 @@ const Seminars = () => {
         {filteredSeminars.map((seminar) => (
           <div
             key={seminar._id}
-            className="w-full sm:w-80 md:w-60 lg:w-80 justify-center items-center"
+            className="h-2/5 w-full sm:w-80 md:w-80 lg:w-80 justify-center items-center"
           >
             <div className="card card-compact bg-base-300 w-full border border-gray-800 shadow-xl flex flex-col">
               <figure
