@@ -71,7 +71,6 @@ const Seminars = () => {
 
   return (
     <section className="mt-4">
-      <h1>Browse Seminars</h1>
       <div className="card card-compact bg-base-300 skeleton border border-gray-800 mb-5 rounded-none shadow-2xl">
         <div className="card-body">
           <div className="flex flex-wrap gap-4  items-center justify-center">

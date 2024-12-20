@@ -69,7 +69,7 @@ const Bookings = () => {
 
   return (
     <section>
-      <h1 className="text-3xl font-bold text-center mb-6">My Bookings</h1>
+      <h1>My Bookings</h1>
       {bookings.length === 0 ? (
         <div className="text-center text-xl">No bookings yet</div>
       ) : (
@@ -78,8 +78,8 @@ const Bookings = () => {
           const seminarDate = seminar.date.trim().split("T")[0]; // e.g., "2024-12-14"
           const seminarTime = seminar.timeFrame.from.trim(); // Ensure proper time format
           return (
-            <div className="m-5 p-5" key={booking._id}>
-              <div className="mockup-browser bg-base-300 shadow-xl">
+            <div className="p-2" key={booking._id}>
+              <div className="mockup-browser bg-base-300 shadow-xl overflow-auto">
                 <div className="mockup-browser-toolbar">
                   <div className="input justify-center text-center">
                     <Link to={seminar.speaker?.linkedin || "#"}>
@@ -88,7 +88,7 @@ const Bookings = () => {
                   </div>
                 </div>
                 <div
-                  className="bg-base-200 px-4 py-5"
+                  className="bg-base-200 px-4 py-5 overflow-auto"
                   style={{
                     background: getRandomGradient(),
                     borderRadius: "0.375rem",

@@ -95,11 +95,11 @@ const Seminar = () => {
   };
 
   return (
-    <section className="m-4 sm:m-6 lg:m-10 p-4 sm:p-6 lg:p-10">
+    <section className="p-2 mt-4">
       <button onClick={() => navigate(-1)} className="text-2xl mb-4">
         <FaArrowLeft />
       </button>
-      <div className="skeleton mockup-browser bg-base-300 shadow-xl">
+      <div className="skeleton mockup-browser bg-base-300 shadow-xl overflow-auto">
         <div className="mockup-browser-toolbar">
           <div className="input justify-center text-center">
             <Link to={seminar.speaker?.linkedin || "#"}>
@@ -108,7 +108,7 @@ const Seminar = () => {
           </div>
         </div>
         <div
-          className="bg-base-200 px-4 py-5 rounded-lg"
+          className="bg-base-200 px-4 py-5 rounded-lg overflow-auto"
           style={{
             background: background, // Using the fixed background gradient
           }}
