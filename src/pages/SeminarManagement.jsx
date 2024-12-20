@@ -173,7 +173,7 @@ const SeminarManagement = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="bg-base-100 h-fit w-1/4">
+          <div className="bg-base-100 h-fit md:w-1/2 lg:w-1/4">
             <SeminarForm
               seminar={editSeminar}
               onSave={editSeminar ? handleUpdate : handleCreate}

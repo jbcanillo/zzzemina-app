@@ -197,7 +197,7 @@ const UserManagement = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="bg-base-100 h-full w-1/4">
+          <div className="bg-base-100 h-full md:w-1/2 lg:w-1/4">
             <UserForm
               user={editUser}
               onSave={editUser ? handleUpdate : handleCreate}
