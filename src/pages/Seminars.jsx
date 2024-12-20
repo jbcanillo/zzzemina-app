@@ -123,7 +123,7 @@ const Seminars = () => {
 
       <div className="flex flex-wrap justify-center items-center gap-4">
         {filteredSeminars.map((seminar) => (
-          <Card key={seminar._id} seminar={seminar} /> // Use Card component here
+          <Card key={seminar._id} seminar={seminar} />
         ))}
       </div>
     </section>

@@ -95,8 +95,8 @@ const Seminar = () => {
   };
 
   return (
-    <section className="p-2 mt-4">
-      <button onClick={() => navigate(-1)} className="text-2xl mb-4">
+    <section>
+      <button onClick={() => navigate(-1)} className="text-2xl mt-4 mb-4">
         <FaArrowLeft />
       </button>
       <div className="skeleton mockup-browser bg-base-300 shadow-xl overflow-auto">
@@ -113,8 +113,8 @@ const Seminar = () => {
             background: background, // Using the fixed background gradient
           }}
         >
-          <div className="flex flex-col gap-4 sm:flex-row p-6">
-            <div className="flex flex-col items-center gap-4 sm:items-start">
+          <div className="flex flex-col gap-4 p-6 sm:flex-row sm:gap-6">
+            <div className="flex flex-col items-center gap-4 w-full sm:w-4/12">
               <img
                 src={
                   seminar.speaker.image ||
@@ -128,9 +128,9 @@ const Seminar = () => {
                 }
               />
             </div>
-            <div className="flex flex-col gap-4 w-full sm:w-3/6">
+            <div className="flex flex-col gap-4 w-full sm:w-5/12">
               <h1
-                className="text-2xl sm:text-4xl mb-2 text-center sm:text-left"
+                className="text-4xl mb-2"
                 style={{
                   textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
                 }}
@@ -138,7 +138,7 @@ const Seminar = () => {
                 {seminar.title || "Seminar Title"}
               </h1>
               <p
-                className="italic text-center sm:text-left"
+                className="italic"
                 style={{
                   textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
                 }}
@@ -146,7 +146,7 @@ const Seminar = () => {
                 {seminar.description}
               </p>
             </div>
-            <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg w-full sm:w-3/12">
+            <div className="flex flex-col gap-4 bg-base-300 p-4 rounded-lg w-full sm:w-4/12">
               <CountdownTimer
                 seminarDate={seminarDate}
                 seminarTime={seminarTime}
@@ -155,7 +155,7 @@ const Seminar = () => {
                 <FaUser />
                 <h3>Speaker: {seminar.speaker?.name}</h3>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 w-max">
                 <FaCalendar />
                 <h3>Date: {formatDate(seminar.date)}</h3>
               </div>
