@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { formatDate, formatTime } from "../helpers/CustomHelpers";
 import { useToast } from "../contexts/ToastContext";
-import Card from "./Card";
+import Card from "../components/Card";
 
 const Seminars = () => {
   const [date, setDate] = useState("");
