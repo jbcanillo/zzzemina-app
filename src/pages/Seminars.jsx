@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Axios from "axios";
-import {
-  formatDate,
-  formatTime,
-  getRandomGradient,
-} from "../helpers/CustomHelpers";
+import { formatDate, formatTime } from "../helpers/CustomHelpers";
 import { useToast } from "../contexts/ToastContext";
+import Card from "./Card";
 
 const Seminars = () => {
   const [date, setDate] = useState("");
@@ -127,52 +123,7 @@ const Seminars = () => {
 
       <div className="flex flex-wrap justify-center items-center gap-4">
         {filteredSeminars.map((seminar) => (
-          <div
-            key={seminar._id}
-            className="h-2/5 w-full sm:w-80 md:w-80 lg:w-80 justify-center items-center"
-          >
-            <div className="card card-compact bg-base-300 w-full border border-gray-800 shadow-xl flex flex-col">
-              <figure
-                className="relative w-full h-48"
-                style={{
-                  background: getRandomGradient(),
-                  borderRadius: "0.375rem",
-                }}
-              >
-                <img
-                  src={
-                    seminar.speaker.image ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  }
-                  alt={seminar.speaker.name}
-                  className="absolute top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-4 border-white"
-                  onError={(e) =>
-                    (e.target.src =
-                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp")
-                  }
-                />
-              </figure>
-              <div className="card-body flex flex-col flex-grow">
-                <h2 className="card-title">{seminar.title}</h2>
-                <h3>Presented by {seminar.speaker.name}</h3>
-                <h3>
-                  {formatDate(seminar.date)} at{" "}
-                  {formatTime(seminar.timeFrame.from)} -{" "}
-                  {formatTime(seminar.timeFrame.to)}
-                </h3>
-                <h3>{seminar.slotsAvailable} available slots remaining</h3>
-
-                <div className="card-actions justify-center mt-auto">
-                  <Link
-                    to={`/seminar/${seminar._id}`}
-                    className="btn btn-sm btn-dark"
-                  >
-                    Book now!
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Card key={seminar._id} seminar={seminar} /> // Use Card component here
         ))}
       </div>
     </section>
